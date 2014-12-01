@@ -3,8 +3,7 @@
     filetype off
 
     set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-
+    call vundle#begin() 
     " This is the Vundle package, which can be found on GitHub.
     " " For GitHub repos, you specify plugins using the
     " " 'user/repository' format Plugin 'gmarik/Vundle.vim'
@@ -14,23 +13,22 @@
     Plugin 'Valloric/YouCompleteMe' 
     Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
-    Plugin 'wincent/command-t'
     Plugin 'scrooloose/syntastic'
     Plugin 'itchyny/lightline.vim'
     Plugin 'tpope/vim-surround'
-    Plugin 'flazz/vim-colorschemes'
+    Plugin 'flazz/vim-colorschemes' 
     Plugin 'vim-perl/vim-perl'
     Plugin 'tpope/vim-rails'
     Plugin 'scrooloose/nerdtree.git'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'majutsushi/tagbar'
 
     "Plugin 'MarcWeber/vim-addon-mw-utils'
     "Plugin 'tomtom/tlib_vim'
     "Plugin 'bling/vim-airline'
     "Plugin 'scrooloose/nerdcommenter'
-    "Plugin 'kien/ctrlp.vim'
     "Plugin 'tyru/open-browser.vim' 
     "Plugin 'mhinz/vim-signify'
-    "Plugin 'majutsushi/tagbar'
     "Plugin 'sjl/gundo.vim'
     "Plugin 'plasticboy/vim-markdown'
     "Plugin 'justinmk/vim-sneak'
@@ -49,8 +47,6 @@
 
 
 "#vim vonfiguration{
-
-    colorscheme 256-grayvim 
 
     syntax enable
     filetype on
@@ -83,8 +79,7 @@
         set nu
         set clipboard=unnamedplus
         set autoread
-        set laststatus=2
-    "}
+        set laststatus=2 "}
 
     " Format Status line {
         set statusline=%F\ \ \
@@ -110,8 +105,6 @@
     " Mapping {
         inoremap jj <Esc>
         inoremap kk <Esc>
-        inoremap jk <Esc>
-        inoremap kj <Esc>
     "}
 
     " Setting Up Directories {
@@ -136,12 +129,12 @@
         nnoremap <c-k> <c-w>k
         nnoremap <c-l> <c-w>l
 
-        nnoremap <leader>w :w<cr>
-        nnoremap <leader>q :q<cr>
-        nnoremap <leader>Q :q!<cr>
+        nnoremap <leader>w :w<CR>
+        nnoremap <leader>q :q<CR>
+        nnoremap <leader>Q :q!<CR>
        
-        nnoremap <leader>ev :split $MYVIMRC<cr>
-        nnoremap <leader>sv :source $MYVIMRC<cr>:nohlsearch<cr>
+        nnoremap <leader>ev :split $MYVIMRC<CR>
+        nnoremap <leader>sv :source $MYVIMRC<CR>:nohlsearch<CR>
 
         nnoremap <leader>U bveU
         
@@ -155,11 +148,43 @@
         nnoremap <space> za
 
         inoremap jk <esc>
+        "Delete until end of line in insert mode"
         inoremap <leader>D <esc>d^xi
         inoremap <leader>U <esc>bveUea
+
+        "add copy paste function map"
+        vnoremap <C-c> "+y
+        vnoremap <C-v> "+p
+
+        nmap <F8> :TagbarToggle<CR>
+
+        map <C-j> <C-w>j
+        map <C-k> <C-w>k
+        map <C-l> <C-w>l
+        map <C-h> <C-w>h
+        nnoremap <leader>i :JavaImport<Enter>
+        nnoremap <leader>d :JavaDocSearch -x declarations<Enter>
+        nnoremap <C-e> :JavaSearchContext<Enter>
+
+        set splitbelow
+        set splitright
+        
+        nnoremap <leader>" mzBi"<esc>1Ea"<esc>`zl
+        nnoremap <leader>' mzBi'<esc>1Ea'<esc>`zl
+        nnoremap <leader>< mzBi<<esc>1Ea><esc>`zl
+        nnoremap <leader>( mzBi'<esc>1Ea)<esc>`zl
+        nnoremap <leader>[ mzBi'<esc>1Ea]<esc>`zl
+        nnoremap <leader>_ mzBi'<esc>1Ea_<esc>`zl
+
+        inoremap <leader>" mzBi"<esc>1Ea"<esc>`zl
+        inoremap <leader>' mzBi'<esc>1Ea'<esc>`zl
+        inoremap <leader>< mzBi<<esc>1Ea><esc>`zl
+        inoremap <leader>( mzBi'<esc>1Ea)<esc>`zl
+        inoremap <leader>[ mzBi'<esc>1Ea]<esc>`zl
+        inoremap <leader>_ mzBi'<esc>1Ea_<esc>`zl
+
     "}
 
-    let g:CommandTMaxHeight = 10
     let g:UltiSnipsExpandTrigger = g:mapleader . "<tab>"
     let g:UltiSnipsJumpForwardTrigger = g:mapleader . "<tab>"
     let g:UltiSnipsListSnippets = g:mapleader . "`"
@@ -169,6 +194,7 @@
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
     let g:syntasti_check_on_open = 1
+    let g:ctrlp_max_files=0 
     
 
     " YouCompleteMe {
@@ -180,7 +206,9 @@
         let g:ycm_seed_identifiers_with_syntax = 1 
         let g:ycm_autoclose_preview_window_after_insertion = 1 
         let g:ycm_always_populate_location_list = 1 
+        let g:EclimCompletionMethod = 'omnifunc'
     "}
-
+    colorscheme Tomorrow 
+    colorscheme 256-grayvim 
 "}
 
